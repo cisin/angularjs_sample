@@ -1,0 +1,31 @@
+<div class="content" style="margin-left:0px;">
+    <div class="header">
+        <h1 class="page-title">Admin Login</h1>
+    </div>
+    <div class="main-content">
+        <div class="">
+            <form name="loginUp" novalidate ng-submit="submitLoginForm()">
+                <div class="modal-body">
+                    <div class="row control-group" ng-class="{ 'has-error' : loginUp.email.$invalid && !loginUp.email.$pristine }">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <lable>Email Address</lable>
+                            <input type="email" name="email" class="form-control" placeholder="Email Address" ng-model="email" required>
+                            <p ng-show="loginUp.email.$invalid && !loginUp.email.$pristine" class="help-block">Enter a valid email.</p>
+                        </div>
+                    </div>
+                    <div class="row control-group" ng-class="{ 'has-error' : loginUp.password.$invalid && !loginUp.password.$pristine }">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                         <lable>Password</lable>
+                            <input type="password" name="nPassword" placeholder="Password" class="form-control" ng-model="password" ng-minlength="8" required ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/">
+                            <p ng-show="loginUp.nPassword.$error.pattern" class="has-error">Password should be atleast 8 characters long and should contain one number,one character and one special character.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" style="width:100%" class="btn btn-primary" ng-disabled="loginUp.$invalid">Login <i class="fa fa-cog fa-spin" ng-if="isBusy"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

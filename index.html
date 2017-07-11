@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Music App</title>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+	   <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src="app.js"></script>
+	  <script type="text/javascript" src="app/controllers/loginController.js"></script>
+	  <script type="text/javascript" src="app/controllers/registerController.js"></script>
+	  <script type="text/javascript" src="app/controllers/homeController.js"></script>
+
+</head>
+<body ng-controller="appController">
+	 <header>
+        <ul class="nav nav-tabs" ng-show="luser">
+			<li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
+			<li ng-click="logoutUser()"><a>Logout</a></li>
+		</ul>
+		<ul class="nav nav-tabs" ng-show="!luser">
+            <li ng-class="{active: activeTab === 'login'}"><a ui-sref="login">Login</a></li>
+			<li ng-class="{active: activeTab === 'register'}"><a ui-sref="register">Register</a></li>
+        </ul>
+    </header>
+
+    <!-- main -->
+    <main ui-view></main>
+
+    <!-- footer -->
+    <footer></footer>
+
+</body>
+</html>
