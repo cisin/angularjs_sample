@@ -1,40 +1,60 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" amp lang="en">
+
 <head>
-	<title>Music App</title>
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
-	   <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	  <script type="text/javascript" src="app.js"></script>
-	  <!-- services -->
-	  <script type="text/javascript" src="app/services/authentication.js"></script>
-	  <script type="text/javascript" src="app/services/userService.js"></script>
-
-	  <script type="text/javascript" src="app/controllers/loginController.js"></script>
-	  <script type="text/javascript" src="app/controllers/registerController.js"></script>
-	  <script type="text/javascript" src="app/controllers/homeController.js"></script>
-
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>Angular App</title>
+    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z"
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <!-- services -->
+    <script type="text/javascript" src="app/services/authentication.js"></script>
+    <script type="text/javascript" src="app/services/userService.js"></script>
+    <script type="text/javascript" src="app/controllers/loginController.js"></script>
+    <script type="text/javascript" src="app/controllers/registerController.js"></script>
+    <script type="text/javascript" src="app/controllers/homeController.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.7.2/angular-translate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-sanitize.js"></script>
+    <script type="text/javascript"  src="app/translate/textToEnglish.js"></script>
+    <script type="text/javascript"  src="app/translate/textToDutch.js"></script>
 </head>
+
 <body ng-controller="appController">
-	 <header>
-        <ul class="nav nav-tabs" ng-show="luser">
-			<li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
-			<li ng-click="logoutUser()"><a>Logout</a></li>
-		</ul>
-		<ul class="nav nav-tabs" ng-show="!luser">
-            <li ng-class="{active: activeTab === 'login'}"><a ui-sref="login">Login</a></li>
-			<li ng-class="{active: activeTab === 'register'}"><a ui-sref="register">Register</a></li>
+    <header>
+        <ul class="nav nav-tabs">
+            <li ng-show="luser" ng-class="{active: activeTab === 'home'}"><a ui-sref="home" translate="HOME">Home</a></li>
+            <li ng-show="luser" ng-click="logoutUser()"><a translate="LOGOUT">Logout</a></li>
+            <li ng-show="!luser" ng-class="{active: activeTab === 'login'}"><a ui-sref="login" translate="LOGIN">Login</a></li>
+            <li ng-show="!luser" ng-class="{active: activeTab === 'register'}"><a ui-sref="register" translate="REGISTER">Register</a></li>
+            <li class="language-nav">
+                <div class="nav-div" style="padding: 5px;">
+                    <button class="btn btn-info active" ng-click="changeLanguage('en')">English</button>
+                    <button class="btn btn-info" ng-click="changeLanguage('de')">Dutch</button>
+                </div>
+            </li>
         </ul>
     </header>
-
     <!-- main -->
     <main ui-view></main>
-
     <!-- footer -->
     <footer></footer>
-
 </body>
+
 </html>

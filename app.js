@@ -1,6 +1,6 @@
-var app = angular.module("app", ['ui.router', 'ngStorage']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
+var app = angular.module("app", ['pascalprecht.translate', 'ui.router', 'ngStorage']);
+app.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -29,13 +29,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 requireLogin: true
             }
-        })
+        });
+
+    $translateProvider.fallbackLanguage('en');
+    $translateProvider.registerAvailableLanguageKeys(['en', 'de'], {
+        'en_*': 'en',
+        'de_*': 'de'
+    })
+    $translateProvider.translations('en', englishText);
+    $translateProvider.translations('de',dutchText);
+    $translateProvider.useSanitizeValueStrategy('escape');
+    $translateProvider.preferredLanguage('en');
 
 });
 
 app.run(['$rootScope', '$state', '$localStorage', function($rootScope, $state, $localStorage) {
     $rootScope.$on('$stateChangeStart', function(event, $stateProvider) {
-
         var requireLogin = $stateProvider.data.requireLogin;
         // console.log("$localStorage",$localStorage)
         if (requireLogin && typeof $localStorage.isLogin === "undefined" && !$localStorage.isLogin) {
@@ -52,23 +61,28 @@ app.run(['$rootScope', '$state', '$localStorage', function($rootScope, $state, $
 
 }]);
 
-app.controller('appController', ['$scope', '$rootScope', '$state', '$localStorage', function($scope, $rootScope, $state, $localStorage) {
+app.controller('appController', ['$scope', '$rootScope', '$state', '$localStorage', '$translate', function($scope, $rootScope, $state, $localStorage, $translate) {
 
     if ($localStorage.isLogin) {
         $rootScope.luser = true;
     }
-    $scope.$on("sendLoginInfo", function(evt) {
 
+    $scope.$on("sendLoginInfo", function(evt) {
         $scope.isLogin = (typeof $localStorage.isLogin !== "undefined" && $localStorage.isLogin == true) ? true : false;
         $rootScope.luser = (typeof $localStorage.isLogin !== "undefined" && $localStorage.isLogin == true) ? true : false;
         console.log("2" + $rootScope.luser);
     });
+
     $scope.logoutUser = function() {
         delete $localStorage.isLogin;
         delete $localStorage.loginAdminUser;
         $scope.isLogin = false;
         $rootScope.luser = false;
         $state.go('login');
-        console.log("3" + $rootScope.luser);
     }
+
+    $scope.changeLanguage = function(key) {
+        $translate.use(key);
+    };
+
 }]);

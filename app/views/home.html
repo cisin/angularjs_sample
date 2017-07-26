@@ -1,16 +1,20 @@
 <div class="container">
-
-<audio id="myAudio" src="{{songSrc}}" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
-
-  <h2>Play songs</h2>
-  <ul class="list-group">
-    <li class="list-group-item">Song1      <button ng-click="playAudio('song1')" type="button">Play Audio</button>
-<button ng-click="pauseAudio('song1')" type="button">Pause Audio</button></li>
-    <li class="list-group-item">Song2      <button ng-click="playAudio('song2')" type="button">Play Audio</button>
-<button ng-click="pauseAudio('song2')" type="button">Pause Audio</button></li>
-    <li class="list-group-item">Song3       <button ng-click="playAudio('song3')" type="button">Play Audio</button>
-<button ng-click="pauseAudio('song3')" type="button">Pause Audio</button></li>
-  </ul>
+    <audio id="myAudio" src="{{songSrc}}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <h2 translate="PLAY_SONGS">Play songs</h2>
+    <ul class="list-group">
+        <li class="list-group-item"><span translate="SONG">Song</span>1
+            <button ng-click="playAudio('song1')" type="button" translate="PLAY_AUDIO">Play Audio</button>
+            <button ng-click="pauseAudio('song1')" type="button" translate="PAUSE_AUDIO"></button>
+        </li>
+        <li class="list-group-item"><span translate="SONG">Song</span>2
+            <button ng-click="playAudio('song2')" type="button" translate="PLAY_AUDIO">Play Audio</button>
+            <button ng-click="pauseAudio('song2')" type="button" translate="PAUSE_AUDIO">Pause Audio</button>
+        </li>
+        <li class="list-group-item"><span translate="SONG">Song</span>3
+            <button ng-click="playAudio('song3')" type="button" translate="PLAY_AUDIO">Play Audio</button>
+            <button ng-click="pauseAudio('song3')" type="button" translate="PAUSE_AUDIO">Pause Audio</button>
+        </li>
+    </ul>
 </div>
