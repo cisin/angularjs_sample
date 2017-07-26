@@ -1,0 +1,20 @@
+englishText = {
+    TITLE: 'Music App',
+    HOME: 'Home',
+    LOGOUT: 'Logout',
+    LOGIN: 'Login',
+    REGISTER: 'Register',
+    PLAY_SONGS: 'Play Songs',
+    SONG: 'Song',
+    PLAY_AUDIO: 'Play Audio',
+    PAUSE_AUDIO: 'Pause Audio',
+    ADMIN_LOGIN: 'Admin login',
+    EMAIL_ADDRESS:'Email address',
+    EMAIL_ERROR:'Enter a valid email.',
+    PASSWORD:'Password',
+    PASSWORD_ERROR:'Password should be atleast 8 characters long and should contain one number,one character and one special character.',
+    REGISTRATION:'Registration',
+    NAME:'Name',
+    NAME_ERROR:'Enter a valid name.',
+    SIGNUP:'Sign-up'
+}
